@@ -54,7 +54,7 @@ import { TaskItem } from '../TaskItem/TaskItem';
 // }
 
 export const TaskList = ({tasks, onStatusChange, onPriorityChange, onDelete}: TaskListProps) => {
-  console.log(tasks, onStatusChange, onPriorityChange, onDelete);
+  //console.log(tasks, onStatusChange, onPriorityChange, onDelete);
 
   return (
     <>

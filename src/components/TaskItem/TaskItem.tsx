@@ -19,13 +19,19 @@ import { Dropdown } from '../Dropdown/Dropdown';
 // Create a TaskItem component that displays individual task information.
 
 export const TaskItem = ({ task, onStatusChange, onPriorityChange, onDelete }: TaskItemProps) => {
+
+  // the naming conventions are a real issue.
+  const handleDropdownChange = (event: any, taskId: string, key: string, newValue: string) => {
+    console.log(event.target.value);
+  }
+
   return (
     <div>
       <div className='taskTitleContainer'>
         <span className='taskTitle'>{task.title}</span>
         <span className='taskTitleButtonContainer'>
-          <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={() => onStatusChange} selected={task.status} />
-          <button onClick={() => onDelete}>Delete</button>
+          <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={onStatusChange} selected={task.status} />
+          <button onClick={() => onDelete(task.id)}>Delete</button>
         </span>
       </div>
       <p>{`TASK TITLE: ${task.title}, TASK DESCRIPTION: ${task.description}, TASK DUE DATE: ${task.dueDate}`}</p>

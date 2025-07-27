@@ -46,5 +46,10 @@ export const getIndexSortedArray = (sortedArrayOfObjects: Array<Task>, id: strin
 // console.log(getIndex(dataTaskArray, "I'm not a task.")); // -1
 
 export const getIndex = (unsortedArrayOfObjects: Array<Task>, id: string) => {
-  
+  for (let i = 0; i < unsortedArrayOfObjects.length; i++) {
+    if (unsortedArrayOfObjects[i].id === id) {
+      return i;
+    }
+  }
+  return -1;
 }

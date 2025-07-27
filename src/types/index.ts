@@ -13,15 +13,19 @@ export interface Task {
  
 export interface TaskListProps {
   tasks: Task[];
-  onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
-  onPriorityChange: (taskId: string, newPriority: PriorityStatus) => void;
+  onStatusChange: (taskId: string, key: string, newValue: string) => void;
+  onPriorityChange: (taskId: string, key: string, newValue: string) => void;
+  // onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
+  // onPriorityChange: (taskId: string, newPriority: PriorityStatus) => void;
   onDelete: (taskId: string) => void;
 }
 
 export interface TaskItemProps {
   task: Task;
-  onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
-  onPriorityChange: (taskId: string, newPriority: PriorityStatus) => void;
+  onStatusChange: (taskId: string, key: string, newValue: string) => void;
+  onPriorityChange: (taskId: string, key: string, newValue: string) => void;
+  // onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
+  // onPriorityChange: (taskId: string, newPriority: PriorityStatus) => void;
   onDelete: (taskId: string) => void;
 }
 

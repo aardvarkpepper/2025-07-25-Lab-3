@@ -3,7 +3,7 @@ interface DropdownProps {
   elementName: string;
   arrayOfOptions: string[];
   selected: string;
-  onChange: (event: any) => void;
+  onChange: (taskId: string, key: string, newValue: string) => void;
 }
 
 export const Dropdown = ({id, elementName, arrayOfOptions, onChange, selected = arrayOfOptions[0]}: DropdownProps) => {
