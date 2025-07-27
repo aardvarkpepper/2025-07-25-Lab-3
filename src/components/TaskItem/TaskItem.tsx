@@ -18,13 +18,21 @@ import { Dropdown } from '../Dropdown/Dropdown';
 
 // Create a TaskItem component that displays individual task information.
 
-export const TaskItem = ({task, onStatusChange, onPriorityChange, onDelete}: TaskItemProps) => {
+export const TaskItem = ({ task, onStatusChange, onPriorityChange, onDelete }: TaskItemProps) => {
   return (
     <div>
-      <p>{`TASK ID: ${task.id}, TASK TITLE: ${task.title}, TASK DESCRIPTION: ${task.description}, TASK DUE DATE: ${task.dueDate}`}</p>
-      <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={() => onStatusChange} selected={task.status} />
+      <div className='taskTitleContainer'>
+        <span className='taskTitle'>{task.title}</span>
+        <span className='taskTitleButtonContainer'>
+          <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={() => onStatusChange} selected={task.status} />
+          <button onClick={() => onDelete}>Delete</button>
+        </span>
+      </div>
+      <p>{`TASK TITLE: ${task.title}, TASK DESCRIPTION: ${task.description}, TASK DUE DATE: ${task.dueDate}`}</p>
+      <p>{`TASK ID: ${task.id}`}</p>
+
       <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['low', 'medium', 'high']} onChange={() => onPriorityChange} selected={task.priority} />
-      <button onClick={() => onDelete}>Delete</button>
+
     </div>
   )
 }

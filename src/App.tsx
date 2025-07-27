@@ -61,6 +61,7 @@ function App() {
   return (
     <>
     <div>Test</div>
+    <br />
     {/* <Dropdown id="generic" elementName="IAmAnElement" arrayOfOptions={["cheese","ham","sausage"]} selected="ham" onChange = {(event) => (handleSelectChange(event))}/> */}
     <TaskList tasks={tasklist} onStatusChange = {(event) => handleStatusChange} onPriorityChange = {(event) => handlePriorityChange} onDelete = {(event) => handleDelete}/>
     </>
