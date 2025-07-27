@@ -21,23 +21,19 @@ import { Dropdown } from '../Dropdown/Dropdown';
 export const TaskItem = ({ task, onStatusChange, onPriorityChange, onDelete }: TaskItemProps) => {
 
   // the naming conventions are a real issue.
-  const handleDropdownChange = (event: any, taskId: string, key: string, newValue: string) => {
-    console.log(event.target.value);
-  }
-
   return (
     <div>
       <div className='taskTitleContainer'>
         <span className='taskTitle'>{task.title}</span>
         <span className='taskTitleButtonContainer'>
-          <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={onStatusChange} selected={task.status} />
+          <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={onStatusChange} selected={task.status} keyName='status'/>
           <button onClick={() => onDelete(task.id)}>Delete</button>
         </span>
       </div>
       <p>{`TASK TITLE: ${task.title}, TASK DESCRIPTION: ${task.description}, TASK DUE DATE: ${task.dueDate}`}</p>
       <p>{`TASK ID: ${task.id}`}</p>
 
-      <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['low', 'medium', 'high']} onChange={() => onPriorityChange} selected={task.priority} />
+      <Dropdown id={task.id} elementName={task.id} arrayOfOptions={['low', 'medium', 'high']} onChange={() => onPriorityChange} selected={task.priority} keyName='priority'/>
 
     </div>
   )

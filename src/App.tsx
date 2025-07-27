@@ -66,7 +66,7 @@ function App() {
   };
 
   const handleDelete = (taskId: string) => {
-    console.log('core handleDelete triggered');
+    //console.log('core handleDelete triggered');
     const indexToDelete = getIndex(tasklist, taskId);
     setTasklist(prev => prev.slice(0,indexToDelete).concat(prev.slice(indexToDelete+1)));
   }
