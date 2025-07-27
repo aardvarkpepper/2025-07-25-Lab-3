@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { TaskStatus, Task, TaskListProps } from '../../types/index';
+import { TaskItem } from '../TaskItem/TaskItem';
 
 // Create a TaskList component that manages and displays a list of tasks.
 // conditional rendering based on task properties (filtering)
@@ -34,8 +35,6 @@ import type { TaskStatus, Task, TaskListProps } from '../../types/index';
  * Note to self - better ideation; you ought to have seen this coming.
  */
 
-export const TaskList = ({tasks, onStatusChange, onPriorityChange, onDelete}: TaskListProps) => {
-  console.log(tasks, onStatusChange, onPriorityChange, onDelete);
 
   // export interface TaskListProps {
 //   tasks: Task[];
@@ -53,9 +52,15 @@ export const TaskList = ({tasks, onStatusChange, onPriorityChange, onDelete}: Ta
 //   priority: 'low' | 'medium' | 'high';
 //   dueDate: string;
 // }
- 
+
+export const TaskList = ({tasks, onStatusChange, onPriorityChange, onDelete}: TaskListProps) => {
+  console.log(tasks, onStatusChange, onPriorityChange, onDelete);
 
   return (
-    <></>
+    <>
+    {tasks.map((task) => {
+      return <TaskItem key={task.id} task={task} onStatusChange={onStatusChange} onPriorityChange={onPriorityChange} onDelete={onDelete}/>
+    })}
+    </>
   )
 }

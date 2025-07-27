@@ -5,7 +5,7 @@ export const dataTaskArray: Task[] = [
     id: 'EatApple01',
     title: 'Eat an apple',
     description: 'Zebras like apples, and you might too!',
-    status: 'pending',
+    status: 'Pending',
     priority: 'low',
     dueDate: "2026-08-11"
   },
@@ -13,7 +13,7 @@ export const dataTaskArray: Task[] = [
     id: 'BalanceCantaloupe01',
     title: 'Balance A Cantaloupe On Your Nose',
     description: "Actually, maybe don't do this.",
-    status: 'in-progress',
+    status: 'In Progress',
     priority: 'medium',
     dueDate: "2025-11-11"
   },
@@ -21,7 +21,7 @@ export const dataTaskArray: Task[] = [
     id: 'EatBanana01',
     title: 'Eat a banana',
     description: 'Munch on a yummy banana.',
-    status: 'completed',
+    status: 'Completed',
     priority: 'high',
     dueDate: "2025-07-11"
   },

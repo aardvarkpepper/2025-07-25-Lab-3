@@ -17,7 +17,7 @@ export const sortByKeyValue = (arrayOfObjects: Array<Task>, key: keyof Task = 'i
 
 //console.log(sortByKeyValue(dataTaskArray, 'dueDate'));
 
-export const getIndex = (sortedArrayOfObjects: Array<Task>, id: string) => {
+export const getIndexSortedArray = (sortedArrayOfObjects: Array<Task>, id: string) => {
   //console.log(arrayOfObjects); // remember, this does not change state, nor is it intended to.
   //note:  pass in sorted array.
   let first = 0, last = sortedArrayOfObjects.length - 1;
@@ -44,3 +44,7 @@ export const getIndex = (sortedArrayOfObjects: Array<Task>, id: string) => {
 // console.log(getIndex(dataTaskArray, 'BalanceCantaloupe01')); // 0
 // console.log(getIndex(dataTaskArray, 'EatBanana01')); // 2
 // console.log(getIndex(dataTaskArray, "I'm not a task.")); // -1
+
+export const getIndex = (unsortedArrayOfObjects: Array<Task>, id: string) => {
+  
+}
