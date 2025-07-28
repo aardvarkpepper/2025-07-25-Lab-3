@@ -36,11 +36,13 @@ function App() {
   const [filter, setFilter] = useState({ status: 'All Statuses', priority: 'All Priorities' });
 
   const handleDropdownKeyChange = (taskId: string, keyValue: keyof Task, newValue: string) => {
+    console.log('hDKC invoked');
     // just go through array until finding the ID.  O(n); too many things in assignment operating effectively making sort unreliable.  Really, the database should be always sorted, and only views change, but implementation adds steps so eh.
     // so status change changes key 'status', priority change changes key 'priority'.
     //console.log(`core hDKC triggered, taskId ${taskId}, key ${keyValue}, newValue ${newValue}`);
-    setTasklist(prev =>
-      prev.map((task) => {
+    setTasklist(prev => {
+      const deepCopy = [...prev];
+      const deepCopy2 = deepCopy.map((task) => {
         if (task.id === taskId) {
           // honestly, what is the point of Typescript if I'm just throwing in these 'any' all the time to get around Typescript?  There's got to be a better way.
           (task[keyValue] as any) = newValue;
@@ -49,7 +51,9 @@ function App() {
           return task;
         } // map's anonymous function's return
       }) // map
-    ); // setTasklist
+      console.log(`deepCopy2 ${JSON.stringify(deepCopy2)}`);
+      return deepCopy2;
+    }); // setTasklist
   }; // handleDropownKeyChange
   // this is a lot of brackets, hm.
 
@@ -72,7 +76,7 @@ function App() {
     setFilter(prev => {
       const deepCopy = JSON.parse(JSON.stringify(prev));
       deepCopy[keyValue] = valueValue;
-      console.log(deepCopy);
+      //console.log(deepCopy);
       return deepCopy;
     })
   }
@@ -82,7 +86,7 @@ function App() {
   const filterTasks = () => {
     const deepCopy = [];
     for (let i = 0; i < tasklist.length; i++) {
-      let pushValue=true;
+      let pushValue = true;
       for (const [key, value] of Object.entries(filter)) {
         if (value === "All Statuses" || value === "All Priorities") {
           null;
