@@ -62,13 +62,26 @@ function App() {
     // so status change changes key 'status', priority change changes key 'priority'.
     // remember state changes are a bother.
     console.log(`core hDKC triggered, taskId ${taskId}, key ${key}, newValue ${newValue}`);
-
-  };
+    // setTasklist(prev => []);
+    setTasklist(prev => 
+      prev.map((task) => {
+        return {
+          id: 'hamid',
+          title: 'hamtitle',
+          description: 'hamdescription',
+          status: 'In Progress',
+          priority: 'low',
+          dueDate: 'notadate'
+        } // map's anonymous function's return
+      }) // map
+    ); // setTasklist
+  }; // handleDropownKeyChange
+  // this is a lot of brackets, hm.
 
   const handleDelete = (taskId: string) => {
     //console.log('core handleDelete triggered');
     const indexToDelete = getIndex(tasklist, taskId);
-    setTasklist(prev => prev.slice(0,indexToDelete).concat(prev.slice(indexToDelete+1)));
+    setTasklist(prev => prev.slice(0, indexToDelete).concat(prev.slice(indexToDelete + 1)));
   }
 
   return (
