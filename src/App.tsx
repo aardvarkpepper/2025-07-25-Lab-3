@@ -4,6 +4,7 @@ import type { Task } from './types/index';
 import { dataTaskArray } from './data/data.ts';
 import { TaskList } from './components/TaskList/TaskList';
 import { sortByKeyValue, getIndexSortedArray, getIndex } from './utils/utils.ts';
+import { SortButton } from './components/SortButton/SortButton';
 
 import { Dropdown } from './components/Dropdown/Dropdown';
 
@@ -45,9 +46,17 @@ function App() {
     setTasklist(prev => prev.slice(0, indexToDelete).concat(prev.slice(indexToDelete + 1)));
   }
 
+  const handleSort = () => {
+    setTasklist(prev => {
+      const sorted = sortByKeyValue(prev);
+      //console.log(sorted);
+      return sorted;
+    });
+  }
+
   return (
     <>
-      <div>Test</div>
+      <SortButton onSort={handleSort}></SortButton>
       <br />
       <TaskList tasks={tasklist} onStatusChange={handleDropdownKeyChange} onPriorityChange={handleDropdownKeyChange} onDelete={handleDelete} />
     </>

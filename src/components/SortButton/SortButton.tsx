@@ -1,5 +1,9 @@
-import { sortByKeyValue } from "../../utils/utils";
+interface onSortButtonProps {
+  onSort: () => void;
+}
 
-const SortButton = () => {
-  
+export const SortButton = ({ onSort }: onSortButtonProps) => {
+  return (
+    <button onClick={() => onSort()}>Sort By ID</button>
+  )
 }

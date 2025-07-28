@@ -1,8 +1,12 @@
 import type { Task } from '../types/index';
 import { dataTaskArray } from '../data/data.ts';
 
+// Note:  Remember that mutations are weird with state.
+
 export const sortByKeyValue = (arrayOfObjects: Array<Task>, key: keyof Task = 'id') => {
-  return arrayOfObjects.sort((a, b) => {
+  //console.log('utils sBKV invoked');
+  const nonMutatedArray = [...arrayOfObjects]
+  return nonMutatedArray.sort((a, b) => {
     const stringA = a[key];
     const stringB = b[key];
     if (stringA < stringB) {
