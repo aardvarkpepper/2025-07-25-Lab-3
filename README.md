@@ -37,3 +37,4 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/:active
 https://www.w3schools.com/css/css_display_visibility.asp
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete
+https://react.dev/reference/react-dom/components/select

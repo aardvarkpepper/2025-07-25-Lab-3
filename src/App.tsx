@@ -57,9 +57,11 @@ function App() {
 
       const deepCopy = [];
       for (const each of prev) {
-        if (each.id === taskId) {
+        if (each.id !== taskId) {
+          console.log('hDKC each=taskId');
           deepCopy.push(each);
         } else {
+          console.log('hDKC else');
           const deepCopy2 = JSON.parse(JSON.stringify(each));
           deepCopy2[keyValue] = newValue;
           deepCopy.push(deepCopy2);
@@ -89,7 +91,7 @@ function App() {
     setFilter(prev => {
       const deepCopy = JSON.parse(JSON.stringify(prev));
       deepCopy[keyValue] = valueValue;
-      //console.log(deepCopy);
+      console.log(`handleFilter returning ${JSON.stringify(deepCopy)}`);
       return deepCopy;
     })
   }
@@ -97,6 +99,7 @@ function App() {
   // first try feeding filtered deep copy of 'tasks'.
   // if that doesn't work (forget if dependencies or stuff), then forEach set display: none or initial.
   const filterTasks = () => {
+    console.log(`Current filters: ${JSON.stringify(filter)}`)
     const deepCopy = [];
     for (let i = 0; i < tasklist.length; i++) {
       let pushValue = true;
@@ -111,6 +114,7 @@ function App() {
         deepCopy.push(tasklist[i]);
       }
     } // for . . . tasklist.length
+    console.log(`filterTasks, deepCopy ${JSON.stringify(deepCopy)}`);
     return deepCopy;
   } // filterTasks
   // note:  before, tasks={tasklist}

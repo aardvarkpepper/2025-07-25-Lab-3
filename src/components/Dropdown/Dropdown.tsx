@@ -15,13 +15,15 @@ interface DropdownProps {
 export const Dropdown = ({id, arrayOfOptions, keyName, onChange, className, selected = arrayOfOptions[0], }: DropdownProps) => {
 
   const [dropdownValue, setDropdownValue] = useState(selected);
+
+  const handleDropdownChange = (event: any) => {
+    setDropdownValue(event.target.value);
+    onChange(id, keyName, event.target.value);
+  }
   // previously had in select prop className={`${className} dropdown`}
 
   return (
-    <select id={`${id}${keyName}`} name = {keyName} defaultValue={selected} onChange={(event) => {
-      event.target.className = `${event.target.value} dropdown`;
-      onChange(id, keyName, event.target.value)}
-      } className={`${dropdownValue} dropdown`}>
+    <select id={`${id}${keyName}`} key = {keyName} value={selected} onChange={(event) => handleDropdownChange(event)} className={`${dropdownValue} dropdown`}>
       {arrayOfOptions.map((element) => <option key={element} value={element}>{element}</option>)}
     </select>
   );
