@@ -26,7 +26,7 @@ export const TaskItem = ({ task, onStatusChange, onPriorityChange, onDelete }: T
       <div className='taskTitleContainer'>
         <div className='taskTitle'>{task.title}</div>
         <div className='taskTitleButtonContainer'>
-          <Dropdown key={`${task.id}statusdropdown`} id={`${task.id}${task.status}`} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={onStatusChange} selected={task.status} keyName='status' className={task.status} />
+          <Dropdown key={`${task.id}statusdropdown`} id={`${task.id}`} arrayOfOptions={['Pending', 'In Progress', 'Completed']} onChange={onStatusChange} selected={task.status} keyName='status' className={task.status} />
           <button onClick={() => onDelete(task.id)}>Delete</button>
         </div>
       </div>
@@ -35,7 +35,7 @@ export const TaskItem = ({ task, onStatusChange, onPriorityChange, onDelete }: T
       <div>{`TASK DUE DATE: ${task.dueDate}`}</div>
       <div>{`TASK ID: ${task.id}`}</div>
 
-      <Dropdown key={`${task.id}prioritydropdown`} id={`${task.id}${task.priority}`} arrayOfOptions={['low', 'medium', 'high']} onChange={onPriorityChange} selected={task.priority} keyName='priority' className={task.priority} />
+      <Dropdown key={`${task.id}prioritydropdown`} id={`${task.id}`} arrayOfOptions={['low', 'medium', 'high']} onChange={onPriorityChange} selected={task.priority} keyName='priority' className={task.priority} />
 
     </div>
   )

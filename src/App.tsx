@@ -36,7 +36,7 @@ function App() {
   const [filter, setFilter] = useState({ status: 'All Statuses', priority: 'All Priorities' });
 
   const handleDropdownKeyChange = (taskId: string, keyValue: keyof Task, newValue: string) => {
-    console.log(`hDKC invoked with taskId ${taskId} keyValue ${keyValue} newValue ${newValue}`);
+    console.log(`hDKC invoked with taskId ${taskId}; keyValue ${keyValue}; newValue ${newValue}`);
     // just go through array until finding the ID.  O(n); too many things in assignment operating effectively making sort unreliable.  Really, the database should be always sorted, and only views change, but implementation adds steps so eh.
     // so status change changes key 'status', priority change changes key 'priority'.
     //console.log(`core hDKC triggered, taskId ${taskId}, key ${keyValue}, newValue ${newValue}`);
@@ -57,6 +57,7 @@ function App() {
 
       const deepCopy = [];
       for (const each of prev) {
+        console.log(`hDKC each value: ${JSON.stringify(each)}`);
         if (each.id !== taskId) {
           console.log('hDKC each=taskId');
           deepCopy.push(each);
