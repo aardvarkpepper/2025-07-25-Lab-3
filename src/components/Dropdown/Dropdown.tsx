@@ -10,12 +10,14 @@ interface DropdownProps {
   className: string;
 }
 
-// const handleDropdownKeyChange = (taskId: string, key: string, newValue: string) 
-
+// 
 
 export const Dropdown = ({id, elementName, arrayOfOptions, keyName, onChange, className, selected = arrayOfOptions[0], }: DropdownProps) => {
   return (
-    <select id={id} name = {elementName} defaultValue={selected} onChange={(event) => onChange(id, keyName, event.target.value)} className={`${className} dropdown`}>
+    <select id={id} name = {elementName} defaultValue={selected} onChange={(event) => {
+      event.target.className = event.target.value;
+      onChange(id, keyName, event.target.value)}
+      } className={`${className} dropdown`}>
       {arrayOfOptions.map((element) => <option key={element} value={element}>{element}</option>)}
     </select>
   );
