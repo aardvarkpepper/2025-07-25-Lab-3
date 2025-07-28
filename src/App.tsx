@@ -33,13 +33,13 @@ import './App.css';
 
 function App() {
   const [tasklist, setTasklist] = useState(dataTaskArray);
-  const [filter, setFilter] = useState({status: 'All Statuses', priority: 'All Priorities'});
+  const [filter, setFilter] = useState({ status: 'All Statuses', priority: 'All Priorities' });
 
   const handleDropdownKeyChange = (taskId: string, keyValue: keyof Task, newValue: string) => {
     // just go through array until finding the ID.  O(n); too many things in assignment operating effectively making sort unreliable.  Really, the database should be always sorted, and only views change, but implementation adds steps so eh.
     // so status change changes key 'status', priority change changes key 'priority'.
     //console.log(`core hDKC triggered, taskId ${taskId}, key ${keyValue}, newValue ${newValue}`);
-    setTasklist(prev => 
+    setTasklist(prev =>
       prev.map((task) => {
         if (task.id === taskId) {
           // honestly, what is the point of Typescript if I'm just throwing in these 'any' all the time to get around Typescript?  There's got to be a better way.
@@ -77,13 +77,34 @@ function App() {
     })
   }
 
+  // first try feeding filtered deep copy of 'tasks'.
+  // if that doesn't work (forget if dependencies or stuff), then forEach set display: none or initial.
+  const filterTasks = () => {
+    const deepCopy = [];
+    for (let i = 0; i < tasklist.length; i++) {
+      let pushValue=true;
+      for (const [key, value] of Object.entries(filter)) {
+        if (value === "All Statuses" || value === "All Priorities") {
+          null;
+        } else if (tasklist[i][key as keyof Task] !== value) {
+          pushValue = false;
+        }
+      } // filter
+      if (pushValue) {
+        deepCopy.push(tasklist[i]);
+      }
+    } // for . . . tasklist.length
+    return deepCopy;
+  } // filterTasks
+  // note:  before, tasks={tasklist}
+
   return (
     <>
-    <FilterButton keyValue='status' valueValue={filter.status} arrayOfOptions={["All Statuses", "Pending", "In Progress", "Completed"]} onChange={handleFilter}/>
-    <FilterButton keyValue='priority' valueValue={filter.priority} arrayOfOptions={["All Priorities", 'low', 'medium', 'high']} onChange={handleFilter}/>
+      <FilterButton keyValue='status' valueValue={filter.status} arrayOfOptions={["All Statuses", "Pending", "In Progress", "Completed"]} onChange={handleFilter} />
+      <FilterButton keyValue='priority' valueValue={filter.priority} arrayOfOptions={["All Priorities", 'low', 'medium', 'high']} onChange={handleFilter} />
       <SortButton onSort={handleSort} />
       <br />
-      <TaskList tasks={tasklist} onStatusChange={handleDropdownKeyChange} onPriorityChange={handleDropdownKeyChange} onDelete={handleDelete} />
+      <TaskList tasks={filterTasks()} onStatusChange={handleDropdownKeyChange} onPriorityChange={handleDropdownKeyChange} onDelete={handleDelete} />
     </>
   )
 }
