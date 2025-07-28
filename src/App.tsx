@@ -57,21 +57,20 @@ const handlePriorityChange = (event: any, newPriority: string) => {
 function App() {
   const [tasklist, setTasklist] = useState(dataTaskArray);
 
-  const handleDropdownKeyChange = (taskId: string, key: string, newValue: string) => {
+  const handleDropdownKeyChange = (taskId: string, keyValue: keyof Task, newValue: string) => {
     // just go through array until finding the ID.  O(n); too many things in assignment operating effectively making sort unreliable.  Really, the database should be always sorted, and only views change, but implementation adds steps so eh.
     // so status change changes key 'status', priority change changes key 'priority'.
     // remember state changes are a bother.
-    console.log(`core hDKC triggered, taskId ${taskId}, key ${key}, newValue ${newValue}`);
+    console.log(`core hDKC triggered, taskId ${taskId}, key ${keyValue}, newValue ${newValue}`);
     // setTasklist(prev => []);
     setTasklist(prev => 
       prev.map((task) => {
-        return {
-          id: 'hamid',
-          title: 'hamtitle',
-          description: 'hamdescription',
-          status: 'In Progress',
-          priority: 'low',
-          dueDate: 'notadate'
+        if (task.id === taskId) {
+          // honestly, what is the point of Typescript if I'm just throwing in these 'any' all the time to get around Typescript?  There's got to be a better way to do this.
+          (task[keyValue] as any) = newValue;
+          return task;
+        } else {
+          return task;
         } // map's anonymous function's return
       }) // map
     ); // setTasklist

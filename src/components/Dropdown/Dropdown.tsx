@@ -1,10 +1,12 @@
+import type { Task } from '../../types/index';
+
 interface DropdownProps {
   id: string;
   elementName: string;
   arrayOfOptions: string[];
   selected: string;
-  keyName: string;
-  onChange: (taskId: string, keyName: string, newValue: string) => void;
+  keyName: keyof Task;
+  onChange: (taskId: string, keyName: keyof Task, newValue: string) => void;
 }
 
 // const handleDropdownKeyChange = (taskId: string, key: string, newValue: string) 
