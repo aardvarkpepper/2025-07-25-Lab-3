@@ -1,8 +1,8 @@
 import type { Task } from '../../types/index';
-
+import { useState } from 'react';
 interface DropdownProps {
   id: string;
-  elementName: string;
+  // elementName: string;
   arrayOfOptions: string[];
   selected: string;
   keyName: keyof Task;
@@ -10,14 +10,18 @@ interface DropdownProps {
   className: string;
 }
 
-// 
+// removed id, elementName, from props
 
-export const Dropdown = ({id, elementName, arrayOfOptions, keyName, onChange, className, selected = arrayOfOptions[0], }: DropdownProps) => {
+export const Dropdown = ({id, arrayOfOptions, keyName, onChange, className, selected = arrayOfOptions[0], }: DropdownProps) => {
+
+  const [dropdownValue, setDropdownValue] = useState(selected);
+  // previously had in select prop className={`${className} dropdown`}
+
   return (
-    <select id={id} name = {elementName} defaultValue={selected} onChange={(event) => {
+    <select id={`${id}${keyName}`} name = {keyName} defaultValue={selected} onChange={(event) => {
       event.target.className = `${event.target.value} dropdown`;
       onChange(id, keyName, event.target.value)}
-      } className={`${className} dropdown`}>
+      } className={`${dropdownValue} dropdown`}>
       {arrayOfOptions.map((element) => <option key={element} value={element}>{element}</option>)}
     </select>
   );
