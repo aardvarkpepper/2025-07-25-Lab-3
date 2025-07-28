@@ -6,7 +6,7 @@ I assigned unique keys to the data I wrote for the assignment.  When working wit
 
 2.  What considerations did you make when implementing the filtering functionality?
 
-Unsatisfactory considerations.  As it is, I hard-coded dropdowns corresponding to valid types of 'status' and 'priority', but there should be a more elegant way of handling it.  Explicitly, if a new 'status' is added in the 'index' file of types, then there should be some way to automatically update dropboxes.  However, Typescript data types, I think cannot work that way.  Something like, union types are decided at compile time so can't handle dynamic updates.  At any rate it's awkward.
+Unsatisfactory considerations.  As it is, I hard-coded dropdowns corresponding to valid types of 'status' and 'priority', but there should be a more elegant way of handling it.  Explicitly, if a new 'status' is added in the 'index' file of types, then there should be some way to automatically update dropboxes.  However, Typescript data types, I think cannot work that way.  Something like, union types are decided at compile time so can't handle dynamic updates.  At any rate it's awkward.  Couldn't find anything in Typescript documentation or otherwise to get dropdown options (and similar functionality) to auto-populate.  Might just not be looking for the right search term.
 
 Filtering works; when filter is set to "All Priorities" or "All Statuses", the filter simply doesn't flag the task to be pushed into the list of tasks that's given to the TaskList component to render.
 
@@ -16,7 +16,7 @@ Dropdown event handler received a function that invoked setState passed down as 
 
 4.  What challenges did you face when implementing conditional rendering?
 
-No challenges, really.  Was in something of a rush, as had little time (felt sick, so slept a lot); I knew there were issues with shallow and deep copies using setState.  On testing I noticed filtering wasn't working properly; I looked up Array.map in Javascript and noticed it's a shallow copy, so I made a deep copy.  I'd done something similar earlier somewhere, I forget.  (Probably the .sort, if I remember right).
+No challenges, really.  Was in something of a rush, as had little time (felt sick, so slept a lot); I knew there could be issues with shallow and deep copies using setState.  On testing I noticed filtering wasn't working properly; I looked up Array.map in Javascript and noticed it's a shallow copy, so I made a deep copy.  I'd done something similar earlier somewhere, I forget.  (Probably the .sort, if I remember right).
 
 ## Resources
 
