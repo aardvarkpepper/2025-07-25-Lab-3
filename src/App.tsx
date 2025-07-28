@@ -36,7 +36,7 @@ function App() {
   const [filter, setFilter] = useState({ status: 'All Statuses', priority: 'All Priorities' });
 
   const handleDropdownKeyChange = (taskId: string, keyValue: keyof Task, newValue: string) => {
-    console.log(`hDKC invoked with taskId ${taskId}; keyValue ${keyValue}; newValue ${newValue}`);
+    //console.log(`hDKC invoked with taskId ${taskId}; keyValue ${keyValue}; newValue ${newValue}`);
     // just go through array until finding the ID.  O(n); too many things in assignment operating effectively making sort unreliable.  Really, the database should be always sorted, and only views change, but implementation adds steps so eh.
     // so status change changes key 'status', priority change changes key 'priority'.
     //console.log(`core hDKC triggered, taskId ${taskId}, key ${keyValue}, newValue ${newValue}`);
@@ -57,18 +57,18 @@ function App() {
 
       const deepCopy = [];
       for (const each of prev) {
-        console.log(`hDKC each value: ${JSON.stringify(each)}`);
+        //console.log(`hDKC each value: ${JSON.stringify(each)}`);
         if (each.id !== taskId) {
-          console.log('hDKC each=taskId');
+          //console.log('hDKC each=taskId');
           deepCopy.push(each);
         } else {
-          console.log('hDKC else');
+          //console.log('hDKC else');
           const deepCopy2 = JSON.parse(JSON.stringify(each));
           deepCopy2[keyValue] = newValue;
           deepCopy.push(deepCopy2);
         }
       }
-      console.log(JSON.stringify(deepCopy));
+      //console.log(JSON.stringify(deepCopy));
       return deepCopy;
     }); // setTasklist
   }; // handleDropownKeyChangem.
@@ -92,7 +92,7 @@ function App() {
     setFilter(prev => {
       const deepCopy = JSON.parse(JSON.stringify(prev));
       deepCopy[keyValue] = valueValue;
-      console.log(`handleFilter returning ${JSON.stringify(deepCopy)}`);
+      //console.log(`handleFilter returning ${JSON.stringify(deepCopy)}`);
       return deepCopy;
     })
   }
@@ -100,7 +100,7 @@ function App() {
   // first try feeding filtered deep copy of 'tasks'.
   // if that doesn't work (forget if dependencies or stuff), then forEach set display: none or initial.
   const filterTasks = () => {
-    console.log(`Current filters: ${JSON.stringify(filter)}`)
+    //console.log(`Current filters: ${JSON.stringify(filter)}`)
     const deepCopy = [];
     for (let i = 0; i < tasklist.length; i++) {
       let pushValue = true;
@@ -115,7 +115,7 @@ function App() {
         deepCopy.push(tasklist[i]);
       }
     } // for . . . tasklist.length
-    console.log(`filterTasks, deepCopy ${JSON.stringify(deepCopy)}`);
+    //console.log(`filterTasks, deepCopy ${JSON.stringify(deepCopy)}`);
     return deepCopy;
   } // filterTasks
   // note:  before, tasks={tasklist}
