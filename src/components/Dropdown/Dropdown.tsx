@@ -15,7 +15,7 @@ interface DropdownProps {
 export const Dropdown = ({id, elementName, arrayOfOptions, keyName, onChange, className, selected = arrayOfOptions[0], }: DropdownProps) => {
   return (
     <select id={id} name = {elementName} defaultValue={selected} onChange={(event) => {
-      event.target.className = event.target.value;
+      event.target.className = `${event.target.value} dropdown`;
       onChange(id, keyName, event.target.value)}
       } className={`${className} dropdown`}>
       {arrayOfOptions.map((element) => <option key={element} value={element}>{element}</option>)}
