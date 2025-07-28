@@ -13,3 +13,29 @@
   width: 200px;
   right: 0px;
 }
+
+.low {
+  color: green;
+}
+
+.medium {
+  color: orange;
+}
+
+.high {
+  color: red;
+}
+
+.Pending {
+  background-color: antiquewhite;
+  color: brown;
+}
+
+/* 'In Progress' className essentially has two classes.  Fair enough. */
+.Progress {
+  color: blue;
+}
+
+.Completed {
+  color: green;
+}
