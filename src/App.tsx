@@ -17,8 +17,6 @@ import { Dropdown } from './components/Dropdown/Dropdown';
 
 import './App.css';
 
-
-
 // export interface Task {
 //   id: string;
 //   title: string;
@@ -52,7 +50,10 @@ const handlePriorityChange = (event: any, newPriority: string) => {
   console.log(`Event.target.value: ${event.target.value}, newPriority: ${newPriority}`);
 };
 
-
+/**
+ * 
+ * implement filtering and sorting
+ */
 
 function App() {
   const [tasklist, setTasklist] = useState(dataTaskArray);
@@ -61,7 +62,7 @@ function App() {
     // just go through array until finding the ID.  O(n); too many things in assignment operating effectively making sort unreliable.  Really, the database should be always sorted, and only views change, but implementation adds steps so eh.
     // so status change changes key 'status', priority change changes key 'priority'.
     // remember state changes are a bother.
-    console.log(`core hDKC triggered, taskId ${taskId}, key ${keyValue}, newValue ${newValue}`);
+    //console.log(`core hDKC triggered, taskId ${taskId}, key ${keyValue}, newValue ${newValue}`);
     // setTasklist(prev => []);
     setTasklist(prev => 
       prev.map((task) => {

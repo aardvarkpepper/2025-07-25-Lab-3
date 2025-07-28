@@ -39,3 +39,14 @@
 .Completed {
   color: green;
 }
+
+/* button has hover built in. */
+.dropdown:hover {
+  cursor: pointer;
+}
+
+/* no point in active state on dropdown as the text is covered up anyways. */
+button:active {
+  background-color: black;
+  color: white;
+}
